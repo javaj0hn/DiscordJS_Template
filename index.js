@@ -30,12 +30,13 @@ bot.on("ready", () => {
 
 bot.on("message", async message => {
   //a little bit of data parsing/general checks
+  let prefix = config.prefix;
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
+  if (!message.content.startsWith(prefix)) return;
   let content = message.content.split(" ");
   let command = content[0];
   let args = content.slice(1);
-  let prefix = config.prefix;
 
 
   //checks if message contains a command and runs it
